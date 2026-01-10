@@ -1,0 +1,58 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "portfolio": "Portfolio",
+        "contact": "Contact"
+    },
+    "hero": {
+        "name": "Abdul Habib",
+        "role": "Graphic Designer & Video Editor",
+        "cta": "View My Work"
+    },
+    "about": {
+        "title": "About Me",
+        "bio": "I am a creative Graphic Designer and Video Editor with a passion for visual storytelling. With years of experience, I bring ideas to life through compelling visuals and engaging motion content.",
+        "skills_title": "My Expertise",
+        "skills": [
+            "UI/UX Design",
+            "Motion Graphics",
+            "Video Editing",
+            "Brand Identity",
+            "3D Visualization"
+        ]
+    },
+    "services": {
+        "title": "Services",
+        "graphic_design": {
+            "title": "Graphic Design",
+            "desc": "Stunning visuals that communicate your brand's message effectively."
+        },
+        "video_editing": {
+            "title": "Video Editing",
+            "desc": "Professional editing that turns raw footage into cinematic stories."
+        },
+        "motion_graphics": {
+            "title": "Motion Graphics",
+            "desc": "Dynamic animations that add life to your digital presence."
+        }
+    },
+    "portfolio": {
+        "title": "Featured Work",
+        "view_project": "View Details",
+        "categories": {
+            "all": "All",
+            "graphic": "Graphic Design",
+            "video": "Video"
+        }
+    },
+    "contact": {
+        "title": "Get In Touch",
+        "subtitle": "Let's work together on your next big project.",
+        "name_label": "Name",
+        "email_label": "Email",
+        "message_label": "Message",
+        "submit": "Send Message"
+    }
+}
