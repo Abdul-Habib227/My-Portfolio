@@ -4,8 +4,7 @@ import fs from "fs";
 import mime from "mime";
 
 export async function GET(
-    request: NextRequest,
-    { params }: { params: { filename: string } }
+    request: NextRequest
 ) {
     // Filename is passed as part of the URL query or path
     const searchParams = request.nextUrl.searchParams;
