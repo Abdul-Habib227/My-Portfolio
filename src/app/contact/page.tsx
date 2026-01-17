@@ -37,19 +37,25 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-6">
-                        <a href="mailto:hello@abdulhabib.com" className="flex items-center gap-4 text-xl hover:text-primary transition-colors">
+                        <a href="mailto:habibsohail227@gmail.com" className="flex items-center gap-4 text-xl hover:text-primary transition-colors">
                             <div className="p-4 bg-card rounded-2xl border border-muted">
                                 <Mail size={24} />
                             </div>
-                            hello@abdulhabib.com
+                            habibsohail227@gmail.com
                         </a>
                     </div>
 
                     <div className="flex gap-4">
-                        {[Instagram, Linkedin, Github].map((Icon, i) => (
+                        {[
+                            { Icon: Instagram, href: "https://www.instagram.com/habibsohail227?igsh=ZzlxZXZhcGlvNGt3" },
+                            { Icon: Linkedin, href: "#" },
+                            { Icon: Github, href: "#" }
+                        ].map(({ Icon, href }, i) => (
                             <a
                                 key={i}
-                                href="#"
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="p-4 bg-card border border-muted rounded-2xl hover:border-primary hover:text-primary transition-all hover:-translate-y-2"
                             >
                                 <Icon size={24} />
