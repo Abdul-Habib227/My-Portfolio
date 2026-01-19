@@ -56,13 +56,13 @@ export default function Hero() {
             <div className="text-center">
                 <h1
                     ref={titleRef}
-                    className="text-7xl md:text-9xl font-black mb-4 tracking-tighter"
+                    className="text-6xl md:text-9xl font-black mb-4 tracking-tighter"
                 >
                     {dict.hero.name}
                 </h1>
                 <p
                     ref={subRef}
-                    className="text-xl md:text-2xl text-text-muted mb-16 font-light"
+                    className="text-lg md:text-2xl text-text-muted mb-12 md:mb-16 font-light px-4 md:px-0"
                 >
                     {dict.hero.role}
                 </p>

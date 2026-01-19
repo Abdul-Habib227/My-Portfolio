@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { getDictionary } from "@/lib/i18n";
 import { getProjects, Project } from "@/lib/projects";
 import Link from "next/link";
+import { Play } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,17 +63,17 @@ export default function PortfolioPage() {
 
     return (
         <div className="min-h-screen pt-40 pb-20 px-8 max-w-[1200px] mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
                 <h1 className="text-5xl font-black gradient-text leading-tight">{dict.portfolio.title}</h1>
 
-                <div className="flex bg-card p-1 rounded-2xl border border-muted">
+                <div className="flex bg-card p-1 rounded-2xl border border-muted w-full md:w-auto overflow-x-auto no-scrollbar">
                     {Object.entries(dict.portfolio.categories).map(([key, label]) => (
                         <button
                             key={key}
                             onClick={() => setActiveCategory(key)}
                             className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeCategory === key
-                                    ? "bg-primary text-background shadow-lg"
-                                    : "text-text-muted hover:text-foreground"
+                                ? "bg-primary text-background shadow-lg"
+                                : "text-text-muted hover:text-foreground"
                                 }`}
                         >
                             {label as string}
@@ -100,15 +101,22 @@ export default function PortfolioPage() {
                                 />
                             </div>
                         ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-black/40">
+                            <div className="w-full h-full flex items-center justify-center bg-black/40 relative">
                                 <video
                                     src={`/api/media?file=${encodeURIComponent(project.file)}`}
                                     className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
                                     muted
                                     loop
+                                    playsInline
+                                    preload="metadata"
                                     onMouseOver={(e) => e.currentTarget.play()}
                                     onMouseOut={(e) => e.currentTarget.pause()}
                                 />
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity">
+                                    <div className="p-4 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30 text-primary">
+                                        <Play size={24} fill="currentColor" />
+                                    </div>
+                                </div>
                             </div>
                         )}
 
@@ -119,6 +127,6 @@ export default function PortfolioPage() {
                     </Link>
                 ))}
             </div>
-        </div>
+        </div >
     );
 }

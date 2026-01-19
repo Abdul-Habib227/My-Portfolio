@@ -6,7 +6,6 @@ import mime from "mime";
 export async function GET(
     request: NextRequest
 ) {
-    // Filename is passed as part of the URL query or path
     const searchParams = request.nextUrl.searchParams;
     const filename = searchParams.get("file");
 
@@ -20,13 +19,41 @@ export async function GET(
         return new NextResponse("File not found", { status: 404 });
     }
 
-    const fileBuffer = fs.readFileSync(filePath);
+    const stat = fs.statSync(filePath);
+    const fileSize = stat.size;
+    const range = request.headers.get("range");
     const contentType = mime.getType(filePath) || "application/octet-stream";
 
-    return new NextResponse(fileBuffer, {
-        headers: {
+    if (range) {
+        const parts = range.replace(/bytes=/, "").split("-");
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+        const chunksize = (end - start) + 1;
+        const file = fs.createReadStream(filePath, { start, end });
+
+        const head = {
+            "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+            "Accept-Ranges": "bytes",
+            "Content-Length": chunksize.toString(),
             "Content-Type": contentType,
             "Cache-Control": "public, max-age=31536000, immutable",
-        },
-    });
+        };
+
+        // @ts-ignore - ReadableStream conversion
+        return new NextResponse(file, {
+            status: 206,
+            headers: head,
+        });
+    } else {
+        const head = {
+            "Content-Length": fileSize.toString(),
+            "Content-Type": contentType,
+            "Cache-Control": "public, max-age=31536000, immutable",
+        };
+        const file = fs.createReadStream(filePath);
+        // @ts-ignore - ReadableStream conversion
+        return new NextResponse(file, {
+            headers: head,
+        });
+    }
 }

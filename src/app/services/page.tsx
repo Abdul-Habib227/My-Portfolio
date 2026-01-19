@@ -37,14 +37,14 @@ export default function ServicesPage() {
     ];
 
     return (
-        <div ref={containerRef} className="min-h-screen pt-40 pb-20 px-8 max-w-[1200px] mx-auto text-center">
-            <h1 className="text-6xl font-black mb-16 gradient-text">{dict.services.title}</h1>
+        <div ref={containerRef} className="min-h-screen pt-40 pb-20 px-6 md:px-8 max-w-[1200px] mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-black mb-16 gradient-text">{dict.services.title}</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {serviceItems.map((service, index) => (
                     <div
                         key={index}
-                        className="service-card group p-12 bg-card border border-muted rounded-3xl transition-all duration-500 hover:-translate-y-4 hover:border-primary hover:shadow-[0_0_50px_rgba(79,172,254,0.1)]"
+                        className="service-card group p-8 md:p-12 bg-card border border-muted rounded-3xl transition-all duration-500 hover:-translate-y-4 hover:border-primary hover:shadow-[0_0_50px_rgba(79,172,254,0.1)]"
                     >
                         <div className="mb-8 flex justify-center group-hover:scale-110 transition-transform duration-500">
                             {service.icon}

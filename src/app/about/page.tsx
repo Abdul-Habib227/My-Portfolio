@@ -28,10 +28,10 @@ export default function AboutPage() {
     }, []);
 
     return (
-        <div className="min-h-screen pt-40 pb-20 px-8 max-w-[1200px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <div className="min-h-screen pt-40 pb-20 px-6 md:px-8 max-w-[1200px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
                 <div ref={bioRef}>
-                    <h1 className="text-5xl font-black mb-8 gradient-text">{dict.about.title}</h1>
+                    <h1 className="text-4xl md:text-5xl font-black mb-8 gradient-text">{dict.about.title}</h1>
                     <p className="text-xl text-text-muted leading-relaxed mb-8">
                         {dict.about.bio}
                     </p>
